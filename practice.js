@@ -5,7 +5,12 @@
 
   //Code here
 
+var me = {
+  name: "Kyle",
+  age: 24
+}
 
+alert(me.name);
 
 
 //NEXT PROBLEM
@@ -17,17 +22,27 @@
 
   //Code here
 
+var favoriteThings = {
+  band: "AVICII",
+  food: "Sandwiches",
+  person: "Jesus",
+  book: "Ender's Game",
+  movie: "Avatar",
+  holiday: "Christmas"
+};
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
   //Code here
-
+favoriteThings.car = "Chevy Camaro";
+favoriteThings.brand = "Adidas";
 
 //Now change the food key in your favoriteThings object to be 'Lettuce' and change the book key in your favoriteThings object to be '50 Shades of Gray'.
 
   //Code here
 
-
+favoriteThings.food = "Lettuce";
+favoriteThings.book = "50 Shades of Gray";
 
 
 //NEXT PROBLEM
@@ -44,9 +59,19 @@ that is named color, with the value being the color of your backpack. */
 
   //Code here
 
+var backPack = {
+
+};
+
+var item = "firstPocket";
+backPack[item] = "chapstick";
+backPack.color = "blue";
+
 //After you do the above, alert your entire backPack object.
 
   //Code here
+
+alert(backPack);
 
 /*You probably noticed that it just alerted [object Object].
 Alerting to see the data in your Object doesn't work so well.
@@ -54,7 +79,7 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code here
 
-
+console.log(backPack);
 
 
 //NEXT PROBLEM
@@ -66,10 +91,23 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+var alsoMe = {
+  name: "Kyle",
+  age: 24,
+  height: "5'9\"",
+  gender: "M",
+  married: false,
+  eyeColor: "hazel",
+  hairColor: "brown"
+};
+
 //Now, loop through your object and alert every value. *Tyler --> 24 --> 6'0 --> Male, etc etc
 
   //Code Here
 
+for (var prop in alsoMe) {
+  alert(alsoMe[prop]);
+}
 
 
 
@@ -82,9 +120,21 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+var album = {
+  song1: "3 minutes",
+  song2: "3 minutes",
+  song3: "4 minutes",
+  song4: "4 minutes",
+  song5: "4 minutes"
+}
+
 //Now, loop through your album object alerting every song title individually.
 
   //Code Here
+
+for (var song in album) {
+  alert(song);
+}
 
 
 
@@ -98,11 +148,23 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+var states = {
+  michigan: 1000000,
+  alabama: 1000000,
+  florida: 1000000,
+  california: 1000000,
+  utah: 1000000
+};
+
 //Now, loop through your states object and if the states population is greater than 30K, alert that state.
 
   //Code Here
 
-
+for (var state in states) {
+  if (states[state] > 30000) {
+    alert(state);
+  }
+}
 
 
 //NEXT PROBLEM
@@ -123,10 +185,19 @@ that each value is truthy. If it's not truthy, remove it from the object. */
 
   //Code Here
 
+for (var prop in user1) {
+  if (!user1[prop]) {
+    delete user1[prop];
+  }
+}
+
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
 
+user1.name = "Kyle";
+user1.pwHash = "UUUU";
+user1.username = "kyle33";
 
 
 
@@ -151,11 +222,14 @@ var user2 = {
 
   //Code Here
 
+user2.name = "Tyler S. McGinnis";
+user2.email = "tyler.mcginnis@devmounta.in";
+
 //Now call the sayName method that's on the user object which will alert the users email
 
   //Code Here
 
-
+user2.sayName();
 
 
 //NEXT PROBLEM
@@ -167,16 +241,28 @@ var user2 = {
 
   //Code Here
 
+var methodCollection = {};
+
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
   //Code Here
 
+methodCollection.alertHello = function() {
+  alert("hello");
+};
+
+methodCollection.logHello = function() {
+  console.log("hello");
+};
+
 //Now call your alertHello and logHello methods.
 
   //Code Here
 
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 //NEXT PROBLEM
@@ -188,7 +274,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
   //Code Here
 
-
+var makePerson = function (name, birthday, ssn) {
+  return {
+    name: name,
+    birthday: birthday,
+    ssn: ssn
+  }
+};
 
 //NEXT PROBLEM
 
@@ -198,6 +290,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
   //Code Here
 
+var makeCard = function (cardNumber, expirationDate, securityCode) {
+  return {
+    cardNumber: cardNumber,
+    expirationDate: expirationDate,
+    securityCode: securityCode
+  }
+};
 
 
 //NEXT PROBLEM
@@ -210,3 +309,15 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 */
 
   //Code Here
+
+var bindCard = function(person, creditcard) {
+  var result = {};
+  function mergeProps (object) {
+    for (var prop in object) {
+      result[prop] = object[prop];
+    }
+  }
+  mergeProps(person);
+  mergeProps(creditcard);
+  return result;
+};
